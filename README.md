@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # filmProject
 类似猫眼电影的project
 =======
+=======
+>>>>>>> 添加基本文件
 # Guns V4.0
 
 ## 介绍
@@ -183,5 +186,9 @@ jwt token鉴权机制是指若需要请求服务器接口,必须通过AuthContro
 ![输入图片说明](https://git.oschina.net/uploads/images/2017/0526/103827_d6218c74_551203.png "在这里输入图片标题")
 
 ## 曾获荣誉
+<<<<<<< HEAD
+![输入图片说明](https://gitee.com/uploads/images/2017/1015/151932_f1593f87_551203.jpeg "initpintu_副本_副本.jpg")
+>>>>>>> 添加基本文件
+=======
 ![输入图片说明](https://gitee.com/uploads/images/2017/1015/151932_f1593f87_551203.jpeg "initpintu_副本_副本.jpg")
 >>>>>>> 添加基本文件
