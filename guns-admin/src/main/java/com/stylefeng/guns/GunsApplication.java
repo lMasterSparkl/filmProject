@@ -19,5 +19,6 @@ public class GunsApplication {
     public static void main(String[] args) {
         SpringApplication.run(GunsApplication.class, args);
         logger.info("GunsApplication is success!");
+
     }
 }
