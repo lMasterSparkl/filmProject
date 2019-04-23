@@ -1,11 +1,10 @@
 package com.stylefeng.guns.rest.model;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
 /**
@@ -13,8 +12,8 @@ import java.io.Serializable;
  * 影片与演员映射表
  * </p>
  *
- * @author stylefeng
- * @since 2019-04-21
+ * @author ygt
+ * @since 2019-04-22
  */
 @TableName("mtime_film_actor_t")
 public class MtimeFilmActorT extends Model<MtimeFilmActorT> {

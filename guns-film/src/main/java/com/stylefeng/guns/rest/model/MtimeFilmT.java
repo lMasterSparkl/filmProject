@@ -1,21 +1,20 @@
 package com.stylefeng.guns.rest.model;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-
-import java.io.Serializable;
 import java.util.Date;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableName;
+import java.io.Serializable;
 
 /**
  * <p>
  * 影片主表
  * </p>
  *
- * @author stylefeng
- * @since 2019-04-21
+ * @author zhaolan
+ * @since 2019-04-22
  */
 @TableName("mtime_film_t")
 public class MtimeFilmT extends Model<MtimeFilmT> {
