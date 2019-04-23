@@ -18,9 +18,24 @@
         <result column="film_time" property="filmTime" />
         <result column="film_status" property="filmStatus" />
     </resultMap>
-    <select id="searchFilmsByMultibleCondition" resultType="searchFilmVo">
+    <select id="searchFilmsOrderByMultibleCondition" resultType="searchFilmVo">
             select mfit.film_id filmId,mft.film_name filmName,mft.film_type filmType,mft.img_address imgAddress,mft.film_score filmScore from mtime_film_t mft,mtime_film_info_t mfit
             where mfit.UUID=mft.UUID
+            and mft.film_type=#{showType}
+            and (#{catId}=99 or mft.film_cats like CONCAT('%','#',#{catId},'#','%'))
+            and (#{sourceId}=99 or mft.film_area =#{sourceId})
+            and (#{yearId}=99 or mft.film_date =#{yearId})
+            Order By
+            <if test="sortId==1">
+                mft.film_box_office
+            </if>
+            <if test="sortId==2">
+                mft.film_time
+            </if>
+            <if test="sortId==3">
+                mft.film_score
+            </if>
+            DESC
     </select>
 
 </mapper>

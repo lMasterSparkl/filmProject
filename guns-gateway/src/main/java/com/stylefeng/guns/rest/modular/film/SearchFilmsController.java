@@ -11,6 +11,8 @@
 package com.stylefeng.guns.rest.modular.film;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.stylefeng.guns.rest.model.FIlmVo;
+import com.stylefeng.guns.rest.model.FilmRequestVo;
 import com.stylefeng.guns.rest.model.SearchFilmVo;
 import com.stylefeng.guns.rest.service.SearchFilmsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -38,23 +41,31 @@ public class SearchFilmsController {
     /*********3影片查询控制器**********/
     @Reference
     SearchFilmsService searchFilmsService;
+
+
     @RequestMapping(value = "/getFilms")
-    public Map getSearchFilms(@RequestParam(defaultValue = "1", required = false) String showType,
-                              @RequestParam(defaultValue = "1", required = false) String sortId,
-                              @RequestParam(defaultValue = "99", required = false) String catId,
-                              @RequestParam(defaultValue = "99", required = false) String sourceId,
-                              @RequestParam(defaultValue = "99", required = false) String yearId,
-                              @RequestParam(defaultValue = "1", required = false) String nowPage,
-                              @RequestParam(defaultValue = "18", required = false) String pageSize
-                              ){
+    public Map getSearchFilms( FilmRequestVo filmRequestVo){
         HashMap<String, Object> hashMap = new HashMap<>();
-        LinkedList<SearchFilmVo>searchFilmVos= searchFilmsService.searchByMultibleCondition(showType,sortId,catId,sourceId,yearId);
+
+        try {
+            //分页没做！！！！！！！！！！！！！！！！
+            FIlmVo fIlmVo=searchFilmsService.searchFilmVoByMultibleCondition(filmRequestVo);
+            hashMap.put("status",0);
+            hashMap.put("nowPage ",filmRequestVo.getNowPage());
+            hashMap.put("totalPage  ",fIlmVo.getTotalPage());//总页数需要计算
+            hashMap.put("data",fIlmVo.getSearchFilmVos());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            hashMap.put("status",1);
+            hashMap.put("msg","查询失败,无banner可加载");
+        }catch (Exception e) {
+            e.printStackTrace();
+            hashMap.put("status",999);
+            hashMap.put("msg","系统出现异常,请联系管理员");
+        }
         //分页没做
 
-        hashMap.put("status",0);
-        hashMap.put("nowPage ",1);
-        hashMap.put("totalPage  ",2);
-        hashMap.put("data",searchFilmVos);
+
         return hashMap;
     }
 }
